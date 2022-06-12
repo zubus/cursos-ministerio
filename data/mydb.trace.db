@@ -1,0 +1,50 @@
+2022-06-10 16:49:06 jdbc[35]: null
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.access$100(HikariPool.java:71)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:726)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 18 more
+2022-06-10 16:55:34 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DROP *[*] FROM AUTHORITIES"; se esperaba "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP *[*] FROM AUTHORITIES"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP * FROM AUTHORITIES [42001-200]
+2022-06-10 16:55:47 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DELETE *[*] FROM AUTHORITIES"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE *[*] FROM AUTHORITIES"; expected "identifier"; SQL statement:
+DELETE * FROM AUTHORITIES [42001-200]
+2022-06-10 16:55:54 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DELETE *[*] FROM AUTHORITIES"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE *[*] FROM AUTHORITIES"; expected "identifier"; SQL statement:
+DELETE * FROM AUTHORITIES [42001-200]
+2022-06-10 16:56:25 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DELETE FROM FROM[*] AUTHORITIES"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE FROM FROM[*] AUTHORITIES"; expected "identifier"; SQL statement:
+DELETE FROM FROM AUTHORITIES [42001-200]
+2022-06-10 17:13:54 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (AUTHORITIES: ""ID"" INTEGER DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"")"
+Data conversion error converting "'' (AUTHORITIES: ""ID"" INTEGER DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"")"; SQL statement:
+INSERT INTO "PUBLIC"."AUTHORITIES"("ID","AUTHORITY","USERNAME")VALUES(?,?,?) [22018-200]
+2022-06-10 17:13:54 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (AUTHORITIES: ""ID"" INTEGER DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"")"
+Data conversion error converting "'' (AUTHORITIES: ""ID"" INTEGER DEFAULT NEXT VALUE FOR ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"" NOT NULL NULL_TO_DEFAULT SEQUENCE ""PUBLIC"".""SYSTEM_SEQUENCE_A79AF10C_32FE_40CF_8EC2_DB590DF7B331"")"; SQL statement:
+INSERT INTO "PUBLIC"."AUTHORITIES"("ID","AUTHORITY","USERNAME")VALUES(?,?,?) [22018-200]

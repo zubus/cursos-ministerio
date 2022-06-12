@@ -1,0 +1,98 @@
+<div th:replace="fragments/header"></div>
+
+  <!-- ================ INICIO BANNER ================= -->
+  <section class="home-banner-area">
+    <div class="container">
+      <div class="row justify-content-center fullscreen align-items-center">
+        <div class="col-lg-5 col-md-8 home-banner-left">
+          <h1 class="text-white">
+            ¡Súmate a la revolución digital!
+          </h1>
+          <p class="mx-auto text-white  mt-20 mb-40">
+            Postula a nuestras becas.<br>
+            Estudia cuando quieras, ¡tenemos cursos todo el año!.<br>
+            100% E-learning
+          </p>
+        </div>
+        <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
+          <img class="img-fluid" src="img/header-img.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ FIN BANNER ================= -->
+	<!-- ================ INICIO CARACTERISTICAS ================= -->
+	<section class="feature-area">
+    <div class="container-fluid">
+      <div class="feature-inner row">
+        <div class="col-lg-3 col-md-4">
+          <div class="feature-item d-flex">
+            <i class="ti-cup"></i>
+            <div class="ml-20">
+              <h4>Tiempo</h4>
+              <p>
+                ¡Aprovecha tu tiempo! Contamos con cursos intensivos y flexibles para que en un corto periodo puedas entrar al mercado laboral o desarrollar tus proyectos
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <div class="feature-item d-flex border-right-0">
+            <i class="ti-desktop"></i>
+            <div class="ml-20">
+              <h4>Aprende haciendo</h4>
+              <p>
+                Talleres 100% prácticos. Lo que aprendas, lo harás con las manos ocupadas. Aprende las herramientas del futuro, trabajando con ellas. Construye ese proyecto que estás pensando
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ FIN CARACTERISTICAS ================= -->
+  <!-- ================ INICIO CURSOS ================= -->
+  <section class="popular-course-area">
+    <div class="container-fluid">
+      <div class="row justify-content-center section-title">
+        <div class="col-lg-12">
+          <h2>
+            Revisa nuestros cursos
+          </h2>
+          <p>El 70% de los graduados duplican sus ingresos.</p> 
+          <p>El 20% crea su propia empresa de tecnología o startup.</p>
+        </div>
+      </div>
+      <div class="owl-carousel popuar-course-carusel" >
+        <div class="single-popular-course" data-th-each="cur : ${cursos}">
+	        <a th:href="@{/obtiene/{id}(id=${cur.id})}">
+		          <div class="thumb" th:if="${cur.imagen != null}">
+		            <img class="f-img img-fluid mx-auto" th:src="@{${cur.imagen}}" alt="" />
+		          </div>
+		          <div class="details">
+		            <div class="d-flex justify-content-between mb-20">
+		              <p class="name" th:text="'Inicio: ' + ${#dates.format(cur.fecinicio, 'dd-MM-yyyy')}">Inicio</p>
+		              <p class="name" th:text="'Termino: ' + ${#dates.format(cur.fectermino, 'dd-MM-yyyy')}">Inicio</p>
+		            </div>
+    	              <h4>[[${cur.nombre}]]</h4>
+					<div class="d-flex justify-content-between mt-20" th:switch="${cur.cupos>0}">
+					  <p class="name" th:case="false">Cupos agotados.</p>
+		              <p class="name" th:case="true">Quedan [[${cur.cupos}]] cupos 
+		              	<span sec:authorize="isAnonymous()">
+		            	Regístrate para inscribir.
+		            	</span>
+		              </p>
+		            </div>
+		            
+		            <span sec:authorize="hasRole('USER')" th:switch="${cur.cupos>0}">
+		            	<p th:case="true"><a href="#" class="mr-0 genric-btn success arrow btn-sm">Inscribir<span class="lnr lnr-arrow-right"></span></a></p>
+		            </span>
+		          </div>
+	          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ FIN CURSOS ================= -->
+
+<div th:replace="fragments/footer"></div>

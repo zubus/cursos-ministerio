@@ -1,0 +1,34 @@
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/banner"></div>
+
+<div class="container">
+<h2>Listado de estudiantes</h2>
+
+	<div class="row">
+         <table id="allEstud" class="table table-striped">
+            <thead>
+            <tr>
+                <th width="20%">RUT</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                 <th>IdCurso</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="result" data-th-each="est : ${estudiantes}">
+                <td>[[${est.rut}]]</td>
+                <td>[[${est.nombre}]]</td>
+                <td>[[${est.telefono}]]</td>
+                 <td>[[${est.email}]]</td>
+                 <td>[[${est.idCurso}]]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+
+<div th:replace="fragments/footer"></div>

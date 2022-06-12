@@ -1,0 +1,40 @@
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/banner"></div>
+
+<section class="popular-course-area">
+	<div id="title" class="text-center mb-30">
+	    <h3>Detalle curso</h3>
+	 </div>
+
+<div class="whole-wrap">
+		<div class="container">
+					<div class="progress-table-wrap">
+					<div class="progress-table">
+						<div class="table-head">
+							<div class="nombre">ID</div>
+							<div class="nombre">Imagen</div>
+							<div class="nombre">Descripción</div>
+							<div class="nombre">Nombre</div>
+							<div class="nombre">Cupos</div>
+						</div>
+						<div class="table-row">
+							<div class="nombre">[[${curso.id}]]</div>
+							<div class="nombre" th:if="${curso.imagen != null}"> 
+								<img height=100px; widht=200px; th:src="@{${curso.imagen}}"/>
+							</div>
+							<div class="nombre">[[${curso.descripcion}]]</div>
+							<div class="nombre">[[${curso.nombre}]]</div>
+							<div class="nombre">[[${curso.cupos}]]</div>
+						</div>
+					</div>
+				</div>
+		<!-- Solo usuarios normales pueden matricularse -->
+	    <span sec:authorize="hasAuthority('USER')" th:switch="${curso.cupos>0}">
+			<p th:case="true"><a th:href="@{/asignarCurso/{id}(id=${curso.id})}" class="mr-0 genric-btn success arrow btn-sm mt-20">Matricular<span class="lnr lnr-arrow-right"></span></a></p>
+		</span>
+    </div>
+   
+    <span style="color:red" th:text="${mensaje}"></span>
+</div>
+
+<div th:replace="fragments/footer"></div>

@@ -1,0 +1,46 @@
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/banner"></div>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-tabs mt-5" id="myTabs">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')"><a href="#tab1" data-url="/tab1" class="nav-link active">Usuarios</a></li>
+                <li class="nav-item"><a href="#tab2" data-url="/tab2" class="nav-link">Cursos</a></li>
+                <li class="nav-item"><a href="#tab3" data-url="/tab3" class="nav-link">Mi Panel</a></li>
+            </ul>
+
+            <div class="tab-content pt-3">
+                <div class="tab-pane active" id="tab1" sec:authorize="hasAuthority('ADMIN')">Active panel</div>
+                <div class="tab-pane active" id="tab2" sec:authorize="hasAuthority('USER')">Active panel</div>
+                <div class="tab-pane" id="tab3"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault();
+
+        var url = $(this).attr("data-url");
+        var href = this.hash;
+        var pane = $(this);
+
+        // ajax load from data-url
+        $(href).load(url, function (result) {
+            pane.tab('show');
+        });
+    });
+
+    // load first tab content
+    $('#tab1').load($('.nav-link.active').attr("data-url"), function (result) {
+    });
+
+</script>
+
+<div th:replace="fragments/footer"></div>
